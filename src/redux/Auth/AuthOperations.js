@@ -43,6 +43,7 @@ const logOut = createAsyncThunk('auth/logout', async () => {
 
 const getCurrent = createAsyncThunk('auth/current', async tokenFromStore => {
   try {
+    console.log(tokenFromStore);
     token.set(tokenFromStore);
     const data = await axios.get('/users/current');
     return data.data.user;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'redux/operations';
-import { Button, Input, FormLabel, FormControl } from '@chakra-ui/react';
+import { Button, Input } from '@chakra-ui/react';
 import PropTypes from 'prop-types';
 import css from './contactsForm.module.css';
 

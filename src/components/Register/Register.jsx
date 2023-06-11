@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { auth } from 'redux/Auth/AuthOperations';
-import { Button, Input, FormLabel, FormControl } from '@chakra-ui/react';
+import { Button, Input, FormLabel } from '@chakra-ui/react';
 
 const Register = () => {
   const initialState = {

@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getContacts, deleteContact } from 'redux/operations';
 import { Button, List, ListItem } from '@chakra-ui/react';
-import authSelectors from 'redux/Auth/AuthSelectors';
 import css from './contacts.module.css';
 
 export default function Contacts() {
@@ -11,15 +10,14 @@ export default function Contacts() {
     contactDeleteHandler(event.currentTarget.dataset.id);
   };
 
-  const { contacts, isLoading, error } = useSelector(state => state.contacts);
+  const { contacts, isLoading } = useSelector(state => state.contacts);
 
   const dispatch = useDispatch();  
 
   const filter = useSelector(state => state.filter);
-  const token = useSelector(authSelectors.getToken);
 
   useEffect(() => {
-      dispatch(getContacts(token));
+      dispatch(getContacts());
     }, [dispatch]);
 
   const filterToLowercase = filter.toLowerCase();

@@ -1,5 +1,4 @@
 import React, { Fragment, useEffect } from 'react';
-import shortid from 'shortid';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './HomePage/HomePage';
@@ -14,24 +13,21 @@ import authSelectors from 'redux/Auth/AuthSelectors';
 import PrivateRoute from './Routes/PrivateRoute';
 import { auth } from 'redux/Auth/AuthOperations';
 import { Search } from './Search/Search';
-import { ChakraBaseProvider, extendBaseTheme, Flexbox } from '@chakra-ui/react';
+import { ChakraBaseProvider, extendBaseTheme} from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme';
 
 const {
   Button,
   Input,
   FormLabel,
-  FormControl,
   Tabs,
   TabList,
-  Tab,
   TabIndicator,
   Flex,
   List,
   ListItem,
   Spacer,
   Box,
-  Link,
   Heading,
 } = chakraTheme.components;
 
@@ -40,7 +36,6 @@ const formTheme = extendBaseTheme({
     Button,
     Input,
     FormLabel,
-    FormControl,
   },
 });
 
@@ -48,14 +43,12 @@ const headerTheme = extendBaseTheme({
   components: {
     Tabs,
     TabList,
-    Tab,
     TabIndicator,
     Flex,
     List,
     Spacer,
     Button,
     Box,
-    Link,
     ListItem,
   },
 });
@@ -75,11 +68,8 @@ const homePageTheme = extendBaseTheme({
 });
 
 export default function App() {
-  const inputId = shortid.generate();
-  const telId = shortid.generate();
 
   const token = useSelector(authSelectors.getToken);
-  const isLoading = useSelector(authSelectors.getIsLoading);
 
   const dispatch = useDispatch();
 
@@ -87,7 +77,7 @@ export default function App() {
     if (token) {
       dispatch(auth.getCurrent(token));
     }
-  }, []);
+  }, [dispatch, token]);
 
   return (
     <div>

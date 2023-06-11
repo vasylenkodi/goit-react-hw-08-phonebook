@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { changeFilter } from 'redux/filterSlice';
 import { useSelector } from 'react-redux';
-import { Button, Input, FormLabel, FormControl } from '@chakra-ui/react';
+import { Input} from '@chakra-ui/react';
 import shortid from 'shortid';
 import css from './search.module.css';
 

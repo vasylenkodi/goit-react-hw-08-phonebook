@@ -4,9 +4,6 @@ import authSelectors from 'redux/Auth/AuthSelectors';
 import {
   Tabs,
   TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
   TabIndicator,
   Flex,
   List,

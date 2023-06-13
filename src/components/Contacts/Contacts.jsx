@@ -2,7 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getContacts, deleteContact } from 'redux/operations';
+import authSelectors from 'redux/Auth/AuthSelectors';
 import { Button, List, ListItem } from '@chakra-ui/react';
+import axios from 'axios';
 import css from './contacts.module.css';
 
 export default function Contacts() {
@@ -15,6 +17,8 @@ export default function Contacts() {
   const dispatch = useDispatch();  
 
   const filter = useSelector(state => state.filter);
+  const token = useSelector(authSelectors.getToken);
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
   useEffect(() => {
       dispatch(getContacts());
@@ -26,6 +30,7 @@ export default function Contacts() {
   });
 
   const contactDeleteHandler = idToDelete => {
+
     dispatch(deleteContact(idToDelete));
   };
 
@@ -34,7 +39,7 @@ export default function Contacts() {
     <List className={css.contactsList}>
       {contactsArray.map(contact => {
         return (
-          <ListItem key={contact.id} className={css.contactsListItemst__item}>
+          <ListItem key={contact.id} className={css.contactsListItems__item}>
             {contact.name}: {contact.number}{' '}
             <Button
               type="button"
